@@ -3,6 +3,11 @@ Type=Boolean
 DefaultValue=False
 Description=Enabled in input
 
+[Tsundere/Marker]
+Type=String
+DefaultValue=!
+Description=Character to add following each input character (Use "juhua" to see magic" LOL)
+
 [Tsundere/Hotkey]
 Type=Hotkey
 DefaultValue=CTRL_SHIFT_T

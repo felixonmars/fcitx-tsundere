@@ -39,13 +39,14 @@
 
 typedef struct _FcitxTsundere {
     FcitxGenericConfig gconfig;
+    char *marker;
     boolean enabled;
     FcitxHotkey hkToggle[2];
     FcitxInstance* owner;
 } FcitxTsundere;
 
 void* TsundereCreate(FcitxInstance* instance);
-static char* TsundereOutputFilter(void* arg, const char* strin);
+static char* TsundereCommitFilter(void* arg, const char* strin);
 static boolean GetTsundereEnabled(void* arg);
 void ReloadTsundere(void* arg);
 static void TsundereLanguageChanged(void* arg, const void* value);
@@ -57,6 +58,7 @@ static void ToggleTsundereState(void*);
 
 CONFIG_BINDING_BEGIN(FcitxTsundere)
 CONFIG_BINDING_REGISTER("Tsundere", "Enabled", enabled)
+CONFIG_BINDING_REGISTER("Tsundere", "Marker", marker)
 CONFIG_BINDING_REGISTER("Tsundere", "Hotkey", hkToggle)
 CONFIG_BINDING_END()
 
@@ -88,10 +90,9 @@ void* TsundereCreate(FcitxInstance* instance)
 
     FcitxStringFilterHook shk;
     shk.arg = tsundereState;
-    shk.func = TsundereOutputFilter;
+    shk.func = TsundereCommitFilter;
 
     FcitxInstanceRegisterHotkeyFilter(instance, hk);
-    FcitxInstanceRegisterOutputFilter(instance, shk);
     FcitxInstanceRegisterCommitFilter(instance, shk);
     FcitxUIRegisterStatus(instance, tsundereState, "tsundere", _("Tsundere Engine"), _("Tsundere Engine"), ToggleTsundereState, GetTsundereEnabled);
 
@@ -105,9 +106,9 @@ INPUT_RETURN_VALUE HotkeyToggleTsundereState(void* arg)
 {
     FcitxTsundere* tsundereState = (FcitxTsundere*) arg;
 
-    FcitxUIStatus *status = FcitxUIGetStatusByName(tsundereState->owner, "Tsundere");
+    FcitxUIStatus *status = FcitxUIGetStatusByName(tsundereState->owner, "tsundere");
     if (status->visible){
-        FcitxUIUpdateStatus(tsundereState->owner, "Tsundere");
+        FcitxUIUpdateStatus(tsundereState->owner, "tsundere");
         return IRV_DO_NOTHING;
     }
     else
@@ -127,19 +128,26 @@ boolean GetTsundereEnabled(void* arg)
     return tsundereState->enabled;
 }
 
-char* TsundereOutputFilter(void* arg, const char *strin)
+char* TsundereCommitFilter(void* arg, const char *strin)
 {
     FcitxTsundere* tsundereState = (FcitxTsundere*) arg;
     FcitxIM* im = FcitxInstanceGetCurrentIM(tsundereState->owner);
 
-    if (!im)
+    if (!im || !tsundereState->enabled)
         return NULL;
 
     int i = 0;
     int len = fcitx_utf8_strlen(strin);
     char* ret = (char *) malloc(sizeof(char) * (len * UTF8_MAX_LENGTH * 2 + 1));
     char* ps = strin;
-    const char* mark = "!";
+    char* juhua = "\xd2\x89";
+    char* marker;
+
+    if (!strcmp(tsundereState->marker, "juhua"))
+	marker = juhua;
+    else
+	marker = tsundereState->marker;
+
     ret[0] = '\0';
 
     for (; i < len; ++i) {
@@ -148,7 +156,7 @@ char* TsundereOutputFilter(void* arg, const char *strin)
         char *nps = fcitx_utf8_get_char(ps, &wc);
 
         strncat(ret, ps, chr_len);
-        strcat(ret, mark);
+        strcat(ret, marker);
         
         ps = nps;
     }
@@ -168,11 +176,9 @@ boolean LoadTsundereConfig(FcitxTsundere* tsundereState)
     fp = FcitxXDGGetFileUserWithPrefix("conf", "fcitx-tsundere.config", "r", &file);
     FcitxLog(DEBUG, "Load Config File %s", file);
     free(file);
-    boolean newconfig = false;
     if (!fp) {
         if (errno == ENOENT)
             SaveTsundereConfig(tsundereState);
-        newconfig = true;
     }
 
     FcitxConfigFile *cfile = FcitxConfigParseConfigFileFp(fp, configDesc);
@@ -214,7 +220,7 @@ void TsundereLanguageChanged(void* arg, const void* value)
     if (lang && strncmp(lang, "zh", 2) == 0 && strlen(lang) > 2)
         visible = true;
     
-    FcitxUISetStatusVisable(tsundereState->owner, "Tsundere", visible);
+    FcitxUISetStatusVisable(tsundereState->owner, "tsundere", visible);
 }
 
 
