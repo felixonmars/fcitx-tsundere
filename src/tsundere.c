@@ -138,7 +138,6 @@ char* TsundereCommitFilter(void* arg, const char *strin)
 
     int i = 0;
     int len = fcitx_utf8_strlen(strin);
-    char* ret = (char *) malloc(sizeof(char) * (len * UTF8_MAX_LENGTH * 2 + 1));
     char* ps = strin;
     char* juhua = "\xd2\x89";
     char* marker;
@@ -147,6 +146,8 @@ char* TsundereCommitFilter(void* arg, const char *strin)
 	marker = juhua;
     else
 	marker = tsundereState->marker;
+
+    char* ret = (char *) malloc(sizeof(char) * (len * UTF8_MAX_LENGTH * (1 + fcitx_utf8_strlen(marker)) + 1));
 
     ret[0] = '\0';
 
