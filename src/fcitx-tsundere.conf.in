@@ -1,0 +1,8 @@
+[Addon]
+Name=fcitx-tsundere
+_GeneralName=Tsundere Engine
+_Comment=Try Ctrl-Shift-T LOL
+Category=Module
+Enabled=True
+Library=fcitx-tsundere.so
+Type=SharedLibrary

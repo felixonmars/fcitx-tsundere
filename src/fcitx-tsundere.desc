@@ -1,0 +1,12 @@
+[Tsundere/Enabled]
+Type=Boolean
+DefaultValue=False
+Description=Enabled in input
+
+[Tsundere/Hotkey]
+Type=Hotkey
+DefaultValue=CTRL_SHIFT_T
+Description=Toggle for enable or disable
+
+[DescriptionFile]
+LocaleDomain=fcitx
