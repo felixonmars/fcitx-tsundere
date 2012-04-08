@@ -6,7 +6,7 @@ Description=Enabled in input
 [Tsundere/Marker]
 Type=String
 DefaultValue=!
-Description=Character to add following each input character (Use "juhua" to see magic" LOL)
+Description=Character to add following each input character (Use 'juhua' to see magic LOL)
 
 [Tsundere/Hotkey]
 Type=Hotkey

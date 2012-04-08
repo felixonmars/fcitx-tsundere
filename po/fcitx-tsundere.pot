@@ -1,0 +1,45 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-08 23:16+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /home/felix/Dropbox/Programs/tsundere/src/fcitx-tsundere.desc:4
+msgid "Enabled in input"
+msgstr ""
+
+#: /home/felix/Dropbox/Programs/tsundere/src/fcitx-tsundere.desc:9
+msgid ""
+"Character to add following each input character (Use 'juhua' to see magic "
+"LOL)"
+msgstr ""
+
+#: /home/felix/Dropbox/Programs/tsundere/src/fcitx-tsundere.desc:14
+msgid "Toggle for enable or disable"
+msgstr ""
+
+# unknown
+msgid "Tsundere"
+msgstr ""
+
+#: /home/felix/Dropbox/Programs/tsundere/build/po/tmp/fcitx-tsundere.conf.in.h:1
+#: /home/felix/Dropbox/Programs/tsundere/build/po/../..//src/tsundere.c:96
+msgid "Tsundere Engine"
+msgstr ""
+
+#: /home/felix/Dropbox/Programs/tsundere/build/po/tmp/fcitx-tsundere.conf.in.h:2
+msgid "Try Ctrl-Shift-T LOL"
+msgstr ""

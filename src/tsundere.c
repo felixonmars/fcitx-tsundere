@@ -49,7 +49,6 @@ void* TsundereCreate(FcitxInstance* instance);
 static char* TsundereCommitFilter(void* arg, const char* strin);
 static boolean GetTsundereEnabled(void* arg);
 void ReloadTsundere(void* arg);
-static void TsundereLanguageChanged(void* arg, const void* value);
 boolean LoadTsundereConfig(FcitxTsundere* tsundereState);
 static FcitxConfigFileDesc* GetTsundereConfigDesc();
 static void SaveTsundereConfig(FcitxTsundere* tsundereState);
@@ -95,8 +94,6 @@ void* TsundereCreate(FcitxInstance* instance)
     FcitxInstanceRegisterHotkeyFilter(instance, hk);
     FcitxInstanceRegisterCommitFilter(instance, shk);
     FcitxUIRegisterStatus(instance, tsundereState, "tsundere", _("Tsundere Engine"), _("Tsundere Engine"), ToggleTsundereState, GetTsundereEnabled);
-
-    FcitxInstanceWatchContext(instance, CONTEXT_IM_LANGUAGE, TsundereLanguageChanged, tsundereState);
 
     return tsundereState;
 }
@@ -211,17 +208,6 @@ void ReloadTsundere(void* arg)
 {
     FcitxTsundere* tsundereState = (FcitxTsundere*) arg;
     LoadTsundereConfig(tsundereState);
-}
-
-void TsundereLanguageChanged(void* arg, const void* value)
-{
-    FcitxTsundere* tsundereState = (FcitxTsundere*) arg;
-    const char* lang = (const char*) value;
-    boolean visible = false;
-    if (lang && strncmp(lang, "zh", 2) == 0 && strlen(lang) > 2)
-        visible = true;
-    
-    FcitxUISetStatusVisable(tsundereState->owner, "tsundere", visible);
 }
 
 
