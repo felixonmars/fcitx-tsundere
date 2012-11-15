@@ -1,5 +1,0 @@
-# List of source files which contain translatable strings.
-./po/desc.po
-./po/conf.po
-@REL_SOURCE_ROOT@/src/tsundere.c
-@REL_SOURCE_ROOT@/src/fcitx-tsundere.conf.in

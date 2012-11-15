@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx-tsundere\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-08 23:16+0800\n"
+"Report-Msgid-Bugs-To: felixonmars@gmail.com\n"
+"POT-Creation-Date: 2012-11-15 01:09-0500\n"
 "PO-Revision-Date: 2012-04-08 23:21+0800\n"
 "Last-Translator: Felix Yan <felixonmars@gmail.com>\n"
 "Language-Team: Chinese (simplified)\n"
@@ -17,29 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/felix/Dropbox/Programs/tsundere/src/fcitx-tsundere.desc:4
-msgid "Enabled in input"
-msgstr "启用"
-
-#: /home/felix/Dropbox/Programs/tsundere/src/fcitx-tsundere.desc:9
+#: src/fcitx-tsundere.desc:9
 msgid ""
 "Character to add following each input character (Use 'juhua' to see magic "
 "LOL)"
 msgstr "在每个输入字符后插入的字符(小提示:试试'juhua')"
 
-#: /home/felix/Dropbox/Programs/tsundere/src/fcitx-tsundere.desc:14
+#: src/fcitx-tsundere.desc:4
+msgid "Enabled in input"
+msgstr "启用"
+
+#: src/fcitx-tsundere.desc:14
 msgid "Toggle for enable or disable"
 msgstr "启用/禁用"
 
+#: src/fcitx-tsundere.conf.in:4
+msgid "Try Ctrl-Shift-T LOL"
+msgstr "试试Ctrl-Shift-T"
+
 # unknown
+#: src/fcitx-tsundere.desc:1 src/fcitx-tsundere.desc:6
+#: src/fcitx-tsundere.desc:11
 msgid "Tsundere"
 msgstr "傲娇"
 
-#: /home/felix/Dropbox/Programs/tsundere/build/po/tmp/fcitx-tsundere.conf.in.h:1
-#: /home/felix/Dropbox/Programs/tsundere/build/po/../..//src/tsundere.c:96
+#: src/tsundere.c:96
 msgid "Tsundere Engine"
 msgstr "傲娇引擎"
-
-#: /home/felix/Dropbox/Programs/tsundere/build/po/tmp/fcitx-tsundere.conf.in.h:2
-msgid "Try Ctrl-Shift-T LOL"
-msgstr "试试Ctrl-Shift-T"

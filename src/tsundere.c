@@ -135,27 +135,27 @@ char* TsundereCommitFilter(void* arg, const char *strin)
 
     int i = 0;
     int len = fcitx_utf8_strlen(strin);
-    char* ps = strin;
+    const char* ps = strin;
     char* juhua = "\xd2\x89";
     char* marker;
 
     if (!strcmp(tsundereState->marker, "juhua"))
-	marker = juhua;
+        marker = juhua;
     else
-	marker = tsundereState->marker;
+        marker = tsundereState->marker;
 
     char* ret = (char *) malloc(sizeof(char) * (len * UTF8_MAX_LENGTH * (1 + fcitx_utf8_strlen(marker)) + 1));
 
     ret[0] = '\0';
 
     for (; i < len; ++i) {
-        int wc;
+        uint32_t wc;
         int chr_len = fcitx_utf8_char_len(ps);
         char *nps = fcitx_utf8_get_char(ps, &wc);
 
         strncat(ret, ps, chr_len);
         strcat(ret, marker);
-        
+
         ps = nps;
     }
     ret[strlen(ret)] = '\0';
