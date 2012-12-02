@@ -1,0 +1,10 @@
+*~
+build*/
+.*
+!.git*
+.git/
+*.kate-swp
+*.orig
+tags
+astyle.sh
+cscope.*
